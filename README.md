@@ -55,7 +55,7 @@ has_one : address
 ｜ purchase    | reference | null: false |
 ｜ postal      | integer   | null: false |
 ｜ preference  | string    | null: false |
-｜ ban_chi      | integer   | null: false |
+｜ ban_chi     | integer   | null: false |
 ｜ residence   | string    | null: false |
 ｜ tel         | integer   | null: false |
 
