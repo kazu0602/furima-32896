@@ -24,8 +24,8 @@
 ｜ --------------|------------|--------------------------------|
 ｜ user          | references | null: false, foreign_key: true |
 ｜ title         | string     | null: false                    |
-｜ concept       | string     | null: false                    |
-｜ category      | string     | null: false                    |
+｜ concept       | text       | null: false                    |
+｜ category_id   | string     | null: false                    |
 ｜ status_id     | integer    | null: false                    |
 ｜ fee_id        | integer    | null: false                    |
 ｜ prefecture_id | integer    | null: false                    |
@@ -57,6 +57,7 @@ has_one : address
 ｜ purchase      | reference | null: false, foreign_key: true |
 ｜ postcode      | string    | null: false                    |
 ｜ prefecture_id | integer   | null: false                    |
+｜ city          | integer   | null: false                    |
 ｜ block         | string    | null: false                    |
 ｜ building      | string    |                                |
 ｜ phone_number  | string    | null: false                    |
