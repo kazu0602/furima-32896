@@ -15,8 +15,8 @@
 
 ### Association
 
--has many : items
--has many : purchases
+- has many : items
+- has many : purchases
 
 ## itemsテーブル
 
@@ -34,8 +34,8 @@
 
 ### Association
 
--belongs_to : user
--has_one : purchase
+- belongs_to : user
+- has_one : purchase
 
 ## purchasesテーブル
 
@@ -46,9 +46,9 @@
 
 ### Association
 
--belongs_to : user
--belongs_to : item
-has_one : address
+- belongs_to : user
+- belongs_to : item
+- has_one : address
 
 ## addressesテーブル
 
@@ -57,11 +57,12 @@ has_one : address
 ｜ purchase      | reference | null: false, foreign_key: true |
 ｜ postcode      | string    | null: false                    |
 ｜ prefecture_id | integer   | null: false                    |
-｜ city          | integer   | null: false                    |
+｜ city          | string    | null: false                    |
 ｜ block         | string    | null: false                    |
 ｜ building      | string    |                                |
 ｜ phone_number  | string    | null: false                    |
 
 ### Association
 
--belongs_to : purchase
+- belongs_to : purchase
+
