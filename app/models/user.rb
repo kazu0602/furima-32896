@@ -10,7 +10,7 @@ NAME_KANA_REGEX = /\A[ぁ-んァ-ン一-龥]/
 
 validates :nickname, presence: true
 validates :password, format: { with: PASSWORD_REGEX }, presence: true
-validates :email, presence: true, uniqueness: { case_sensitive: false }
+validates :email, presence: true #uniqueness: { case_sensitive: false } ここは既にdeviceの仕様
 validates :family_name, presence: true, format: { with: NAME_REGEX }
 validates :given_name, presence: true, format: { with: NAME_REGEX }
 validates :family_name_kana, presence: true, format: { with: NAME_KANA_REGEX }
