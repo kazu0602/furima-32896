@@ -6,6 +6,7 @@ RSpec.describe User, type: :model do
   end
 
   describe 'ユーザー新規登録' do
+   context 'ユーザー登録ができる時' do
     it 'nickname, password, password_confir_mation, email, family_name, given_name, family_name_kana, given_name_kana, birth があれば登録できる' do
     expect(@user).to be_valid
     end
@@ -26,8 +27,10 @@ RSpec.describe User, type: :model do
     it 'ユーザー本名のフリガナは、全角（カタカナ）での入力が必須であること' do
     @user.family_name_kana = 'ヤマダ'
     @user.given_name_kana = 'ハナコ'
+    expect(@user).to be_valid
     end
-
+   end
+   context 'ユーザー登録ができないとき' do
     it 'ニックネームが空では登録できない' do
       @user.nickname = ''
       @user.valid?
@@ -39,11 +42,23 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include "Email can't be blank"
     end
-    
+
+    it 'emailに@を含まないと登録できない' do
+      @user.email = 'kazukazu'
+      @user.valid?
+      expect(@user.errors.full_messages).to include "Email is invalid"
+    end
+
     it 'passwordがからでは登録できない' do
       @user.password = ''
       @user.valid?
       expect(@user.errors.full_messages).to include "Password can't be blank"
+    end
+
+    it 'passwordが全角では登録できない' do
+      @user.password = 'ABCD１２３'
+      @user.valid?
+      expect(@user.errors.full_messages).to include "Password is invalid"
     end
     
     it 'passwordが存在してもpassword_confirmationが空では登録できない' do
@@ -129,5 +144,6 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include "Given name kana is invalid"
     end
+   end
   end
 end
