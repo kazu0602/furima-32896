@@ -12,7 +12,7 @@ with_options presence: true do
 
 validates :nickname
 validates :password, format: { with: PASSWORD_REGEX }
-validates :email #uniqueness: { case_sensitive: false } ここは既にdeviceの仕様
+#validates :email #uniqueness: { case_sensitive: false } ここは既にdeviceの仕様
 validates :family_name, format: { with: NAME_REGEX }
 validates :given_name, format: { with: NAME_REGEX }
 validates :family_name_kana, format: { with: NAME_KANA_REGEX }
