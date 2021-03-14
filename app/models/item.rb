@@ -12,20 +12,25 @@ class Item < ApplicationRecord
   #Activehashのassociationを組んだ
 
   #空の投稿を保存できないようにする
-  validates :title, presence: true
-  validates :fee, presence: true
-  validates :concept , presence: true
-  validates :prefecture_id, presence: true
-  validates :status_id, presence: true
-  validates :delivery_date_id, presence: true
-  validates :category_id, presence: true
-  validates :price, presence: true, format: { with: PRICE_REGEX }, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999}
-  validates :image, presence: true
+ with_options presence: true do
+  validates :title
+  validates :fee
+  validates :concept
+  validates :prefecture_id
+  validates :status_id
+  validates :delivery_date_id
+  validates :category_id
+  validates :price, format: { with: PRICE_REGEX }, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999}
+  validates :image
+ end
   #上記の書き方は正しいのかは不明。
 
   # ジャンルの選択が「--」の時は保存できないようにする
-  validates :prefecture_id, numericality: { other_than: 1 } 
-  validates :status_id, numericality: { other_than: 1 }
-  validates :delivery_date_id, numericality: { other_than: 1 }
-
+  with_options numericality: { other_than: 1 } do
+  validates :category_id
+  validates :prefecture_id
+  validates :status_id
+  validates :delivery_date_id
+  validates :fee_id
+  end
 end

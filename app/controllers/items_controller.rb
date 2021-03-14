@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:index]
 
   def index
   end
@@ -29,9 +29,9 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:image, :title, :concept, :category_id, :status_id, :fee_id, :prefecture_id, :delivery_date_id, :price).merge(user_id: current_user.id)
   end
 
-  def message_params
-    params.require(:message).permit(:content, :image).merge(user_id: current_user.id)
-  end
+  # def message_params
+  #   params.require(:message).permit(:content, :image).merge(user_id: current_user.id)
+  # end
   #ここまで
   #保存以降は後ほど実装予定
 end
