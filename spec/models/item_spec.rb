@@ -37,7 +37,7 @@ RSpec.describe Item, type: :model do
       end
 
       it "カテゴリーで1を選択" do
-        @item.category_id = "1"
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category must be other than 1")
       end
@@ -49,7 +49,7 @@ RSpec.describe Item, type: :model do
       end
 
       it "商品状態で1を選択" do
-        @item.status_id = "1"
+        @item.status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Status must be other than 1")
       end
@@ -61,7 +61,7 @@ RSpec.describe Item, type: :model do
       end
 
       it "配送料についてで1を選択" do
-        @item.fee_id = "1"
+        @item.fee_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Fee must be other than 1")
       end
@@ -73,7 +73,7 @@ RSpec.describe Item, type: :model do
       end
 
       it "発送元の地域についてで1を選択" do
-        @item.prefecture_id = "1"
+        @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
       end
@@ -85,7 +85,7 @@ RSpec.describe Item, type: :model do
       end
 
       it "発送までの日数について1を選択" do
-        @item.delivery_date_id = "1"
+        @item.delivery_date_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery date must be other than 1")
       end
@@ -97,7 +97,7 @@ RSpec.describe Item, type: :model do
       end
 
       it "価格が300円より下だと登録できない" do
-        @item.price = "299"
+        @item.price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
       end
