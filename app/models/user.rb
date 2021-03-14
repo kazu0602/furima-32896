@@ -18,7 +18,9 @@ validates :given_name, format: { with: NAME_REGEX }
 validates :family_name_kana, format: { with: NAME_KANA_REGEX }
 validates :given_name_kana, format: { with: NAME_KANA_REGEX }
 validates :birth
+
 end
+has_many :items
 
 #validates :nickname, presence: true
 #validates :password, format: { with: PASSWORD_REGEX }, presence: true
