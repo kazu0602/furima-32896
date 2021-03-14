@@ -17,9 +17,9 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-    @item = Item.new
-  end
+  # def show
+  #   @item = Item.new
+  # end
 
 
   #以下はActive Storage導入時に追加したもの
