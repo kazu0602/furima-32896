@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index]
 
   def index
     @items = Item.all.order(created_at: :desc)
@@ -18,9 +18,9 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-    @item = Item.find(params[:id])
-  end
+  # def show
+  #   @item = Item.find(params[:id])
+  # end
 
 
   #以下はActive Storage導入時に追加したもの
