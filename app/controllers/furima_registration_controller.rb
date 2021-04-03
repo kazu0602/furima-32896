@@ -1,0 +1,2 @@
+class FurimaRegistrationController < ApplicationController
+end

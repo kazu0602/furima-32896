@@ -21,6 +21,7 @@ validates :birth
 
 end
 has_many :items
+has_many :purchases
 
 #validates :nickname, presence: true
 #validates :password, format: { with: PASSWORD_REGEX }, presence: true
