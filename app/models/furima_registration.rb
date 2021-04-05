@@ -1,6 +1,6 @@
 class FurimaRegistration
   include ActiveModel::Model
-  attr_accessor :postcode, :prefecture_id, :city, :block, :building, :phone_number, :user_id, :item_id
+  attr_accessor :postcode, :prefecture_id, :city, :block, :building, :phone_number, :user_id, :item_id, :token
   #上記にカード番号も含まれるかは後ほど考えるようにする。
 
 with_options presence: true do
@@ -16,6 +16,7 @@ with_options presence: true do
     validates :city
     validates :block
     validates :phone_number
+    validates :token
     end
 
   def save

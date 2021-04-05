@@ -13,6 +13,13 @@ RSpec.describe FurimaRegistration, type: :model do
     end
 
     context '商品購入がうまくいかない時' do
+
+      it "tokenが空のとき" do
+        @furima_registration.token = nil
+        @furima_registration.valid?
+        expect(@furima_registration.errors.full_messages).to include("Token can't be blank")
+      end
+
       it "ポストコードにハイフン無し" do
         @furima_registration.postcode = "12345678"
         @furima_registration.valid?
