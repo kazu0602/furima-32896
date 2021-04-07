@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
-
+  before_action :authenticate_user!
   before_action :find_item, only: [:index, :new, :create ]
+  before_action :user_authentication, only: [:new, :create, :index ]
 
   def index
     @furima_registration = FurimaRegistration.new
@@ -40,4 +41,9 @@ class OrdersController < ApplicationController
       )
     end
 
+    def user_authentication
+      if @item.user == current_user || @item.purchase == nil
+        redirect_to root_path
+      end
+    end
 end
