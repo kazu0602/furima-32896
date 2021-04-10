@@ -14,11 +14,9 @@ RSpec.describe FurimaRegistration, type: :model do
         expect(@furima_registration).to be_valid
       end
 
-      context '商品購入がうまくいくとき' do
-        it '建物名無し' do
+      it '建物名無し' do
           @furima_registration.building = ''
           expect(@furima_registration).to be_valid
-        end
       end
     end
 
@@ -90,7 +88,7 @@ RSpec.describe FurimaRegistration, type: :model do
       end
 
       it 'user_idが空' do
-        @furima_registration.item_id = ''
+        @furima_registration.user_id = ''
         @furima_registration.valid?
         expect(@furima_registration.errors.full_messages).to include("Item can't be blank")
       end
