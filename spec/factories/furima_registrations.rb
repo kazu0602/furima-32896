@@ -1,9 +1,8 @@
 FactoryBot.define do
   factory :furima_registration do
     token{ "tok_abcdefghijk00000000000000000" }
-    user_id { 1 }
-    item_id { 1 }
-    # purchase_id { 1 }
+    user_id { @user.id }
+    item_id { @item.id }
     postcode { '123-4567' }
     prefecture_id { 1 }
     city { '東京都' }
@@ -12,3 +11,4 @@ FactoryBot.define do
     phone_number { "00000000000" }
   end
 end
+

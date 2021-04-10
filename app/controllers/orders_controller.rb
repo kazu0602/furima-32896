@@ -1,13 +1,10 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_item, only: [:index, :new, :create ]
-  before_action :user_authentication, only: [:new, :create, :index ]
+  before_action :find_item
+  before_action :user_authentication
 
   def index
     @furima_registration = FurimaRegistration.new
-  end
-
-  def new
   end
 
   def create

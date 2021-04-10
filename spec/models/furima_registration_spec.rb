@@ -2,13 +2,23 @@ require 'rails_helper'
 
 RSpec.describe FurimaRegistration, type: :model do
   before do
-    @furima_registration = FactoryBot.build(:furima_registration)
+    @item = FactoryBot.create(:item)
+    @user = FactoryBot.create(:user)
+    @furima_registration = FactoryBot.build(:furima_registration, user_id: @user.id , item_id: @item.id)
+    sleep(1)
   end
 
   describe '商品購入機能の実装' do
     context '商品購入がうまくいくとき' do
       it "全ての適切な値が存在する" do
         expect(@furima_registration).to be_valid
+      end
+
+      context '商品購入がうまくいくとき' do
+        it "建物名無し" do
+          @furima_registration.building = ""
+          expect(@furima_registration).to be_valid
+        end
       end
     end
 
@@ -73,6 +83,19 @@ RSpec.describe FurimaRegistration, type: :model do
         @furima_registration.valid?
         expect(@furima_registration.errors.full_messages).to include("Phone number is invalid")
       end
+
+      it "user_idが空" do
+        @furima_registration.user_id = ""
+        @furima_registration.valid?
+        expect(@furima_registration.errors.full_messages).to include("User can't be blank")
+      end
+
+      it "user_idが空" do
+        @furima_registration.item_id = ""
+        @furima_registration.valid?
+        expect(@furima_registration.errors.full_messages).to include("Item can't be blank")
+      end
+
     end
   end
 

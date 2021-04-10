@@ -17,15 +17,16 @@ with_options presence: true do
     validates :block
     validates :phone_number
     validates :token
+    validates :user_id
+    validates :item_id
     end
 
   def save
     purchase = Purchase.create(user_id: user_id, item_id: item_id)
     #購入履歴のテーブルへ保存する処理を記述する。
-    Address.create!(purchase_id: purchase.id, postcode: postcode , prefecture: prefecture_id, city: city, block: block, building: building, phone_number: phone_number)
+    Address.create(purchase_id: purchase.id, postcode: postcode , prefecture: prefecture_id, city: city, block: block, building: building, phone_number: phone_number)
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  # belongs_to :category
 
 end
