@@ -10,13 +10,12 @@ class FurimaRegistration
     validates :phone_number, format: { with: /\A\d{10,11}\z/ }
     # メッセージ部分を削除した。numericality: { other_than: 0, message: "can't be blank" }
   end
+  
+  validates :prefecture_id, numericality: { other_than: 1 }
 
   with_options presence: true do
-    validates :postcode
-    validates :prefecture_id
     validates :city
     validates :block
-    validates :phone_number
     validates :token
     validates :user_id
     validates :item_id

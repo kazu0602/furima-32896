@@ -46,9 +46,9 @@ RSpec.describe FurimaRegistration, type: :model do
       end
 
       it '都道府県が空' do
-        @furima_registration.prefecture_id = ''
+        @furima_registration.prefecture_id = '1'
         @furima_registration.valid?
-        expect(@furima_registration.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@furima_registration.errors.full_messages).to include("Prefecture must be other than 1")
       end
 
       it '都市部分が空' do
@@ -84,14 +84,13 @@ RSpec.describe FurimaRegistration, type: :model do
       it '電話番号が7桁以下（ありえない桁）' do
         @furima_registration.phone_number = 'abcdefg'
         @furima_registration.valid?
-        binding.pry
         expect(@furima_registration.errors.full_messages).to include('Phone number is invalid')
       end
 
       it 'user_idが空' do
         @furima_registration.user_id = ''
         @furima_registration.valid?
-        expect(@furima_registration.errors.full_messages).to include("Phone number is invalid")
+        expect(@furima_registration.errors.full_messages).to include("User can't be blank")
       end
 
       it 'item_idが空' do
