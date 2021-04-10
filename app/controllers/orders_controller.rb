@@ -41,6 +41,6 @@ class OrdersController < ApplicationController
   end
 
   def user_authentication
-    redirect_to root_path if @item.user == current_user || @item.purchases.present?
+    redirect_to root_path if @item.user == current_user || @item.purchase.present?
   end
 end
