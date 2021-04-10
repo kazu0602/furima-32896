@@ -81,14 +81,21 @@ RSpec.describe FurimaRegistration, type: :model do
         expect(@furima_registration.errors.full_messages).to include('Phone number is invalid')
       end
 
-      it 'user_idが空' do
-        @furima_registration.user_id = ''
+      it '電話番号が7桁以下（ありえない桁）' do
+        @furima_registration.phone_number = 'abcdefg'
         @furima_registration.valid?
-        expect(@furima_registration.errors.full_messages).to include("User can't be blank")
+        binding.pry
+        expect(@furima_registration.errors.full_messages).to include('Phone number is invalid')
       end
 
       it 'user_idが空' do
         @furima_registration.user_id = ''
+        @furima_registration.valid?
+        expect(@furima_registration.errors.full_messages).to include("Phone number is invalid")
+      end
+
+      it 'item_idが空' do
+        @furima_registration.item_id = ''
         @furima_registration.valid?
         expect(@furima_registration.errors.full_messages).to include("Item can't be blank")
       end
