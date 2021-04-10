@@ -46,7 +46,7 @@ RSpec.describe FurimaRegistration, type: :model do
       end
 
       it '都道府県が空' do
-        @furima_registration.prefecture_id = '1'
+        @furima_registration.prefecture_id = 1
         @furima_registration.valid?
         expect(@furima_registration.errors.full_messages).to include("Prefecture must be other than 1")
       end
